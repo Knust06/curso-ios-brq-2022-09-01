@@ -30,10 +30,23 @@ struct ContentView: View {
                    
                    List{
 
-                       ForEach(food) { foodElement in
-                           Text(foodElement.name ??  "" )
-                           
+                       ForEach(food) { food in
+                        NavigationLink(destination: EditFoodView(food: food)) {
+                           VStack {
+                                VStack(alignment: .leading, spacing: 6) {
+                                    Text(food.name!)
+                                        
+                                    
+                                    Text("\(Int(food.calories))") 
+                                }
+                                
+                                Text(calcTimeSince(date: food.date!))
+                                    
                        }
+
+                       Text(\(Int(food.calories)))
+                            .foregroundColor(.gray)
+                            .padding()
                    }// list
                    
                    .toolbar{
